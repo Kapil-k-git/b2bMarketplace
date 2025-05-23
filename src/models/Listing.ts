@@ -4,8 +4,9 @@ const listingSchema = new mongoose.Schema(
   {
     title: String,
     description: String,
-    price_per_kg: Number,
+    price: Number,
     attributes: Object,
+    image:String,
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",

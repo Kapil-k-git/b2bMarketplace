@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+      "seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' src/seeds.ts"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",

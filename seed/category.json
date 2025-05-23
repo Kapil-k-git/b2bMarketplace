@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Men's Running Shoes",
+    "description": "Lightweight and durable running shoes ideal for all terrains.",
+    "attributes": {
+      "size": ["7", "8", "9", "10"],
+      "color": ["red", "blue", "black"],
+      "brand": "Nike"
+    },
+    "category": { "$oid": "66500ffeff1234567890abcd" },
+    "image": "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "price": { "$numberLong": "699" }
+  },
+  {
+    "title": "Wireless Noise-Cancelling Headphones",
+    "description": "Over-ear headphones with 30-hour battery life and Bluetooth 5.2.",
+    "attributes": {
+      "color": ["black", "white"],
+      "batteryLife": "30 hours",
+      "connectivity": "Bluetooth 5.2"
+    },
+    "category": { "$oid": "66500ffeff1234567890abce" },
+    "image": "https://media.istockphoto.com/id/1282650376/photo/headphone-on-green-background.jpg?s=2048x2048&w=is&k=20&c=a_wieJfIko9aZGDfkwFfxFZfrZZTjGkJefPsXxVomdk=",
+    "price": { "$numberLong": "599" }
+  }
+]

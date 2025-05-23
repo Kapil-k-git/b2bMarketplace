@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "@/components/Loader";
+import Image from "next/image";
 
 interface Listing {
   _id: string;
@@ -22,10 +23,6 @@ interface Listing {
 interface FacetOption {
   _id: string;
   count: number;
-}
-
-interface Facets {
-  [key: string]: FacetOption[];
 }
 
 interface Category {
@@ -55,8 +52,8 @@ export default function HomePage() {
       const res = await axios.get(`/api/search/`, {
         params: {
           q: query,
-          filters: JSON.stringify(selectedFilters),
-          category: selectedCategory,
+          filters: Object.keys(selectedFilters).length ? JSON.stringify(selectedFilters) : undefined,
+          category: selectedCategory || undefined,
         },
       });
       setResults(res.data.listings);
@@ -86,31 +83,22 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    fetchData();
-  }, [selectedFilters, selectedCategory]);
+    if (category.length) {
+      fetchData();
+    }
+  }, [selectedFilters, selectedCategory, category]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     fetchData();
   };
+  const selectedCategoryObj = category.find(cat => cat._id === selectedCategory);
 
   const onFilterChange = (key: string, value: string) => {
     setSelectedFilters((prev) => ({
       ...prev,
       [key]: value,
     }));
-  };
-
-  const toggleFilter = (key: string, value: string) => {
-    setSelectedFilters((prev) => {
-      const updated = { ...prev };
-      if (updated[key] === value) {
-        delete updated[key];
-      } else {
-        updated[key] = value;
-      }
-      return updated;
-    });
   };
 
   if (loading) {
@@ -169,7 +157,7 @@ export default function HomePage() {
             <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
               <h2 className="font-semibold text-lg mb-4">Filter</h2>
               <div className="space-y-4">
-                {category[0]?.attributeSchema?.map((attribute) => (
+                {selectedCategoryObj?.attributeSchema?.map((attribute) => (
                   <div key={attribute._id}>
                     <h3 className="text-sm font-medium text-gray-700 capitalize mb-1">
                       {attribute.key}
@@ -227,9 +215,10 @@ export default function HomePage() {
                   className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow"
                 >
                   <div className="relative h-48 mb-4">
-                    <img
+                    <Image
                       src={result.image}
                       alt={result.title}
+                      fill
                       className="rounded-t-lg w-100 h-50"
                     />
                   </div>

@@ -1,7 +1,6 @@
 export default function Loading() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header Skeleton */}
       <header className="sticky top-0 z-10 bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -15,10 +14,8 @@ export default function Loading() {
 
       <main className="container mx-auto px-4 py-6">
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Mobile Filter Button Skeleton */}
           <div className="lg:hidden h-10 w-full bg-gray-200 rounded-lg animate-pulse"></div>
 
-          {/* Sidebar Skeleton */}
           <aside className="hidden lg:block w-full lg:w-64 shrink-0 space-y-6">
             {[1, 2, 3].map((i) => (
               <div key={i} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
@@ -37,9 +34,7 @@ export default function Loading() {
             ))}
           </aside>
 
-          {/* Main Content Skeleton */}
           <div className="flex-1">
-            {/* Results Header Skeleton */}
             <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-6">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
@@ -53,7 +48,6 @@ export default function Loading() {
               </div>
             </div>
 
-            {/* Results Grid Skeleton */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {Array(12)
                 .fill(0)
@@ -70,7 +64,6 @@ export default function Loading() {
                 ))}
             </div>
 
-            {/* Pagination Skeleton */}
             <div className="mt-8 flex justify-center">
               <div className="flex items-center gap-1">
                 {Array(7)
